@@ -17,7 +17,10 @@ class ItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            //    
+            'nama_barang' => $this->faker->word(),
+            'jenis_barang' => $this->faker->randomElement(['konsumsi', 'pembersih']),
+            'stok' => $this->faker->numberBetween(0, 100),
         ];
     }
 }
