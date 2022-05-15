@@ -71,7 +71,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('dashboard.items.edit', compact('item'));
     }
 
     /**
@@ -83,7 +83,22 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-        //
+         //validate form
+        $request->validate([
+            'nama_barang'     => 'required|min:2',
+            'jenis_barang'     => 'required',
+            'stok'   => 'required'
+        ]);
+
+        //update Item
+        $item->update([
+            'nama_barang'=> $request->nama_barang,
+            'jenis_barang'=> $request->jenis_barang,
+            'stok'   => $request->stok
+        ]);
+
+        //redirect to index
+        return redirect()->route('items.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
     /**
@@ -94,6 +109,10 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+         //delete post
+         $item->delete();
+
+         //redirect to index
+         return redirect()->route('items.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }

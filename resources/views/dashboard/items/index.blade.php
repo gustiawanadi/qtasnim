@@ -43,24 +43,16 @@
                     <td>{{ $item['nama_barang'] }}</td>
                     <td>{{ $item['jenis_barang'] }}</td>
                     <td>{{ $item['stok'] }}</td>
-                    <td><a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
+                    <td>
+                        <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('items.destroy', $item->id) }}"
+                            method="POST">
+                            <a href="{{ route('items.edit', $item->id) }}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt">
+                            </i>EDIT</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i>HAPUS</button>
+                        </form>
                     </td>
-                    {{-- <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('posts.destroy', $post->id) }}"
-                    method="POST">
-                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
-                    </form> --}}
                 </tr>
                 @endforeach
             </tbody>
