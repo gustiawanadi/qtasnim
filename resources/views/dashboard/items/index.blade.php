@@ -6,12 +6,25 @@
     </div>
 
     <div class="card-body">
+
+        @if ($message = Session::get('success'))
+            <div class="card card-default bg-success">
+                <div class="card-header">
+                    <h3 class="card-title text-white">{{ $message }}</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="position-absolute" style="z-index: 2">
-            <a class="btn btn-primary btn-sm" href="{{ route('items.create') }}"> 
+            <a class="btn btn-primary btn-sm" href="{{ route('items.create') }}">
                 <i class="fas fa-folder"></i>
                 Tambah Daftar Barang
             </a>
-                       
+
         </div>
         <table id="example1" class="table table-bordered table-striped">
             <thead>
@@ -41,29 +54,17 @@
                             Delete
                         </a>
                     </td>
-                    {{-- <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                    {{-- <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('posts.destroy', $post->id) }}"
+                    method="POST">
+                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
                     </form> --}}
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
 </div>
-<script>
-    //message with toastr
-    @if(session()->has('success'))
-    
-        toastr.success('{{ session('success') }}', 'BERHASIL!'); 
-
-    @elseif(session()->has('error'))
-
-        toastr.error('{{ session('error') }}', 'GAGAL!'); 
-        
-    @endif
-</script>
 @endsection
