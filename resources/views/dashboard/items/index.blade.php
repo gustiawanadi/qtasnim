@@ -7,10 +7,11 @@
 
     <div class="card-body">
         <div class="position-absolute" style="z-index: 2">
-            <a class="btn btn-primary btn-sm" href="#">
+            <a class="btn btn-primary btn-sm" href="{{ route('items.create') }}"> 
                 <i class="fas fa-folder"></i>
                 Tambah Daftar Barang
             </a>
+                       
         </div>
         <table id="example1" class="table table-bordered table-striped">
             <thead>
@@ -40,6 +41,12 @@
                             Delete
                         </a>
                     </td>
+                    {{-- <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                    </form> --}}
                 </tr>
                 @endforeach
             </tbody>
@@ -47,5 +54,16 @@
     </div>
 
 </div>
+<script>
+    //message with toastr
+    @if(session()->has('success'))
+    
+        toastr.success('{{ session('success') }}', 'BERHASIL!'); 
 
+    @elseif(session()->has('error'))
+
+        toastr.error('{{ session('error') }}', 'GAGAL!'); 
+        
+    @endif
+</script>
 @endsection
