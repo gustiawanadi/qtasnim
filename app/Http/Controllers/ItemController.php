@@ -29,7 +29,9 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('dashboard.items.create');
+        return view('dashboard.items.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -43,7 +45,7 @@ class ItemController extends Controller
         //validate form
         $request->validate([
             'nama_barang'     => 'required|min:2',
-            'jenis_barang'     => 'required',
+            'category_id'     => 'required',
             'stok'   => 'required'
         ]);
 
@@ -73,7 +75,8 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        return view('dashboard.items.edit', compact('item'));
+        $categories = Category::all();
+        return view('dashboard.items.edit', compact('item','categories'));
     }
 
     /**
@@ -88,14 +91,14 @@ class ItemController extends Controller
          //validate form
         $request->validate([
             'nama_barang'     => 'required|min:2',
-            'jenis_barang'     => 'required',
+            'category_id'     => 'required',
             'stok'   => 'required'
         ]);
 
         //update Item
         $item->update([
             'nama_barang'=> $request->nama_barang,
-            'jenis_barang'=> $request->jenis_barang,
+            'category_id'=> $request->category_id,
             'stok'   => $request->stok
         ]);
 

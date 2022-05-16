@@ -26,10 +26,11 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Jenis Barang</label>
-                        <select class="form-control select2bs4" style="width: 100%;" name="jenis_barang">
+                        <select class="form-control select2bs4" style="width: 100%;" name="category_id">
                             <option selected="selected">Pilih</option>
-                            <option>Konsumsi</option>
-                            <option>Pembersih</option>
+                            @foreach ($categories as $category)
+                            <option value="{{ $category['id'] }}">{{ $category['jenis_barang'] }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
