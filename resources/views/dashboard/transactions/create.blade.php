@@ -2,11 +2,11 @@
 @section('content')
 <div class="card card-default">
     <div class="card-header">
-        <h3 class="card-title">Tambah Barang</h3>
+        <h3 class="card-title">Tambah Transaksi</h3>
     </div>
 
     <div class="card-body">
-        <form action="{{ route('items.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('transactions.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-md-4">
@@ -22,7 +22,19 @@
                         @enderror
                     </div>
                 </div>
-
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Tanggal Transaksi</label>
+                        <input type="date" class="form-control select2bs4 @error('tgl_transaksi') is-invalid @enderror"
+                            id="tgl_transaksi" name="tgl_transaksi" placeholder="Masukkan Nama Barang" required>
+                        <!-- error message untuk nama barang -->
+                        @error('tgl_transaksi')
+                        <div class="alert alert-danger mt-2">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Jenis Barang</label>
@@ -33,10 +45,17 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label>Stok</label>
                         <input type="number" class="form-control select2bs4" id="stok" name="stok"
+                            placeholder="Masukkan Total Stok">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Jumlah Terjual</label>
+                        <input type="number" class="form-control select2bs4" id="jumlah_terjual" name="jumlah_terjual"
                             placeholder="Masukkan Total Stok">
                     </div>
                 </div>

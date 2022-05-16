@@ -27,7 +27,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.transactions.create');
     }
 
     /**
@@ -38,7 +38,20 @@ class TransactionController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
-        //
+        //validate form
+        $request->validate([
+            'nama_barang'     => 'required|min:2',
+            'stok'     => 'required',
+            'jumlah_terjual'     => 'required',
+            'tgl_transaksi'     => 'required',
+            'jenis_barang'     => 'required'
+        ]);
+
+        //create Transaction
+        Transaction::create($request->all());
+
+        //redirect to index
+        return redirect()->route('transactions.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**
@@ -60,7 +73,7 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        //
+        return view('dashboard.transactions.edit', compact('transaction'));
     }
 
     /**
@@ -72,7 +85,26 @@ class TransactionController extends Controller
      */
     public function update(UpdateTransactionRequest $request, Transaction $transaction)
     {
-        //
+        //validate form
+       $request->validate([
+        'nama_barang'     => 'required|min:2',
+        'stok'     => 'required',
+        'jumlah_terjual'     => 'required',
+        'tgl_transaksi'     => 'required',
+        'jenis_barang'     => 'required'
+       ]);
+
+       //update transaction
+       $transaction->update([
+           'nama_barang'=> $request->nama_barang,
+           'stok'   => $request->stok,
+           'jumlah_terjual'     => $request->jumlah_terjual,
+           'tgl_transaksi'     => $request->tgl_transaksi,
+           'jenis_barang'=> $request->jenis_barang
+       ]);
+
+       //redirect to index
+       return redirect()->route('transactions.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
     /**
@@ -83,6 +115,10 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        //delete transaction
+        $transaction->delete();
+
+        //redirect to index
+        return redirect()->route('transactions.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 }
