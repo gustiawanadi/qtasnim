@@ -23,7 +23,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ url('dashboard.index') }}" class="nav-link {{ (request()->is('dashboard/index')) ? 'active' : '' }}">
+                    <a href="{{ url('dashboard') }}" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -32,7 +32,7 @@
                 </li>
                 <li class="nav-header">MAIN MENU</li>
                 <li class="nav-item">
-                    <a href="{{ url('dashboard.items.index') }}" class="nav-link {{ (request()->is('dashboard/items*')) ? 'active' : '' }}">
+                    <a href="{{ url('dashboard/items') }}" class="nav-link {{ (request()->is('dashboard/items*')) ? 'active' : '' }}">
                         <i class="nav-icon far fa-calendar-alt"></i>
                         <p>
                             Barang
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('dashboard.categories.index') }}" class="nav-link {{ (request()->is('dashboard/categories*')) ? 'active' : '' }}">
+                    <a href="{{ url('dashboard/categories') }}" class="nav-link {{ (request()->is('dashboard/categories*')) ? 'active' : '' }}">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Kategori
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('dashboard.transactions.index') }}" class="nav-link {{ (request()->is('dashboard/transactions*')) ? 'active' : '' }}">
+                    <a href="{{ url('dashboard/transactions') }}" class="nav-link {{ (request()->is('dashboard/transactions*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-columns"></i>
                         <p>
                             Transaksi

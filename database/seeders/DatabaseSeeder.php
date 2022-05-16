@@ -28,11 +28,12 @@ class DatabaseSeeder extends Seeder
             'jenis_barang' => 'pembersih'
         ]);
 
-        \App\Models\Item::factory(10)->create();
+        \App\Models\Item::factory(50)->create();
         \App\Models\Item::factory()->create([
             'nama_barang' => 'Kopi',
             'jenis_barang' => 'konsumsi',
             'stok' => 100
         ]);
+        \App\Models\Transaction::factory(50)->create();
     }
 }
