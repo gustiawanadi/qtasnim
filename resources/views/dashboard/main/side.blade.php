@@ -22,8 +22,8 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item">
+                    <a href="{{ url('dashboard.index') }}" class="nav-link {{ (request()->is('dashboard/index')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -32,7 +32,7 @@
                 </li>
                 <li class="nav-header">MAIN MENU</li>
                 <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
+                    <a href="{{ url('dashboard.items.index') }}" class="nav-link {{ (request()->is('dashboard/items*')) ? 'active' : '' }}">
                         <i class="nav-icon far fa-calendar-alt"></i>
                         <p>
                             Barang
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
+                    <a href="{{ url('dashboard.categories.index') }}" class="nav-link {{ (request()->is('dashboard/categories*')) ? 'active' : '' }}">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Kategori
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
+                    <a href="{{ url('dashboard.transactions.index') }}" class="nav-link {{ (request()->is('dashboard/transactions*')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-columns"></i>
                         <p>
                             Transaksi
