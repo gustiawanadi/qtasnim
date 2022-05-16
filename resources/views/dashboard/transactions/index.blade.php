@@ -42,11 +42,11 @@
                 @foreach ($transactions as $transaction)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $transaction['nama_barang'] }}</td>
-                    <td>{{ $transaction['stok'] }}</td>
+                    <td>{{ $transaction->item->nama_barang }}</td>
+                    <td>{{ $transaction->item->stok }}</td>
                     <td>{{ $transaction['jumlah_terjual'] }}</td>
                     <td>{{ $transaction['tgl_transaksi'] }}</td>
-                    <td>{{ $transaction['jenis_barang'] }}</td>
+                    <td>{{ $transaction->item->category->jenis_barang }}</td>
                     <td>
                         <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('transactions.destroy', $transaction->id) }}"
                             method="POST">

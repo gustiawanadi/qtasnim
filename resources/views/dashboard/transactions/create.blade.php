@@ -9,17 +9,16 @@
         <form action="{{ route('transactions.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
             <div class="row">
+                
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Nama Barang</label>
-                        <input type="text" class="form-control select2bs4 @error('nama_barang') is-invalid @enderror"
-                            id="nama_barang" name="nama_barang" placeholder="Masukkan Nama Barang" required>
-                        <!-- error message untuk nama barang -->
-                        @error('nama_barang')
-                        <div class="alert alert-danger mt-2">
-                            {{ $message }}
-                        </div>
-                        @enderror
+                        <select class="form-control select2bs4" style="width: 100%;" name="item_id">
+                            <option selected="selected">Pilih</option>
+                            @foreach ($items as $item)
+                            <option value="{{ $item['id'] }}">{{ $item['nama_barang'] }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -37,26 +36,9 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Jenis Barang</label>
-                        <select class="form-control select2bs4" style="width: 100%;" name="jenis_barang">
-                            <option selected="selected">Pilih</option>
-                            <option>Konsumsi</option>
-                            <option>Pembersih</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Stok</label>
-                        <input type="number" class="form-control select2bs4" id="stok" name="stok"
-                            placeholder="Masukkan Total Stok">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
                         <label>Jumlah Terjual</label>
                         <input type="number" class="form-control select2bs4" id="jumlah_terjual" name="jumlah_terjual"
-                            placeholder="Masukkan Total Stok">
+                            placeholder="Masukkan Jumlah Terjual">
                     </div>
                 </div>
                 <div class="col-md-12">

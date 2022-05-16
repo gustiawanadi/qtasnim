@@ -10,26 +10,25 @@
             @csrf
             @method('PUT')
             <div class="row">
+                
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Nama Barang</label>
-                        <input type="text" class="form-control select2bs4 @error('nama_barang') is-invalid @enderror"
-                            id="nama_barang" name="nama_barang" value="{{ old('nama_barang', $transaction->nama_barang) }}"
-                            placeholder="Masukkan Nama Barang" required>
-                        <!-- error message untuk nama barang -->
-                        @error('nama_barang')
-                        <div class="alert alert-danger mt-2">
-                            {{ $message }}
-                        </div>
-                        @enderror
+                        <select class="form-control select2bs4" style="width: 100%;" name="item_id">
+                            <option selected="{{ old('item_id', $transaction->item['nama_barang']) }}">{{ old('item_id', $transaction->item['nama_barang']) }}</option>
+                            {{-- <option selected="selected">Pilih</option> --}}
+                            @foreach ($items as $item)
+                            <option value="{{ $item['id'] }}">{{ $item['nama_barang'] }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Tanggal Transaksi</label>
                         <input type="date" class="form-control select2bs4 @error('tgl_transaksi') is-invalid @enderror"
-                            id="tgl_transaksi" name="tgl_transaksi" value="{{ old('tgl_transaksi', $transaction->tgl_transaksi) }}" placeholder="Masukkan Tanggal Transaksi" required>
-                        <!-- error message untuk tanggal transaksi -->
+                            id="tgl_transaksi" name="tgl_transaksi" placeholder="Masukkan Nama Barang" value="{{ old('tgl_transaksi', $transaction->tgl_transaksi) }}" required>
+                        <!-- error message untuk nama barang -->
                         @error('tgl_transaksi')
                         <div class="alert alert-danger mt-2">
                             {{ $message }}
@@ -39,26 +38,9 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Jenis Barang</label>
-                        <select class="form-control select2bs4" style="width: 100%;" name="jenis_barang">
-                            <option selected="{{ old('jenis_barang', $transaction->jenis_barang) }}">{{ old('jenis_barang', $transaction->jenis_barang) }}</option>
-                            <option>Konsumsi</option>
-                            <option>Pembersih</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Stok</label>
-                        <input type="number" class="form-control select2bs4" id="stok" name="stok"
-                            value="{{ old('stok', $transaction->stok) }}" placeholder="Masukkan Total Stok">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
                         <label>Jumlah Terjual</label>
-                        <input type="number" class="form-control select2bs4" id="jumlah_terjual" name="jumlah_terjual" value="{{ old('jumlah_terjual', $transaction->jumlah_terjual) }}"
-                            placeholder="Masukkan Total Stok">
+                        <input type="number" class="form-control select2bs4" id="jumlah_terjual" name="jumlah_terjual"
+                            placeholder="Masukkan Jumlah Terjual" value="{{ old('jumlah_terjual', $transaction->jumlah_terjual) }}">
                     </div>
                 </div>
                 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
+use App\Models\Item;
 
 class TransactionController extends Controller
 {
@@ -27,7 +28,9 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        return view('dashboard.transactions.create');
+        return view('dashboard.transactions.create', [
+            'items' => Item::all()
+        ]);
     }
 
     /**
@@ -40,11 +43,9 @@ class TransactionController extends Controller
     {
         //validate form
         $request->validate([
-            'nama_barang'     => 'required|min:2',
-            'stok'     => 'required',
+            'item_id'     => 'required',
             'jumlah_terjual'     => 'required',
-            'tgl_transaksi'     => 'required',
-            'jenis_barang'     => 'required'
+            'tgl_transaksi'     => 'required'
         ]);
 
         //create Transaction
@@ -73,7 +74,8 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        return view('dashboard.transactions.edit', compact('transaction'));
+        $items = Item::all();
+        return view('dashboard.transactions.edit', compact('transaction', 'items'));
     }
 
     /**
@@ -87,20 +89,16 @@ class TransactionController extends Controller
     {
         //validate form
        $request->validate([
-        'nama_barang'     => 'required|min:2',
-        'stok'     => 'required',
+        'item_id'     => 'required',
         'jumlah_terjual'     => 'required',
-        'tgl_transaksi'     => 'required',
-        'jenis_barang'     => 'required'
+        'tgl_transaksi'     => 'required'
        ]);
 
        //update transaction
        $transaction->update([
-           'nama_barang'=> $request->nama_barang,
-           'stok'   => $request->stok,
+           'item_id'=> $request->item_id,
            'jumlah_terjual'     => $request->jumlah_terjual,
-           'tgl_transaksi'     => $request->tgl_transaksi,
-           'jenis_barang'=> $request->jenis_barang
+           'tgl_transaksi'     => $request->tgl_transaksi
        ]);
 
        //redirect to index
