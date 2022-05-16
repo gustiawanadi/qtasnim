@@ -21,6 +21,13 @@ class DatabaseSeeder extends Seeder
             //     'email' => 'test@example.com',
             // ]);
             
+        \App\Models\Category::factory()->create([
+            'jenis_barang' => 'konsumsi'
+        ]);
+        \App\Models\Category::factory()->create([
+            'jenis_barang' => 'pembersih'
+        ]);
+
         \App\Models\Item::factory(10)->create();
         \App\Models\Item::factory()->create([
             'nama_barang' => 'Kopi',
