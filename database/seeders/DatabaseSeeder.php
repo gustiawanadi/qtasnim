@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Item::factory(50)->create();
         \App\Models\Item::factory()->create([
             'nama_barang' => 'Kopi',
-            'jenis_barang' => 'konsumsi',
+            'category_id' => 1,
             'stok' => 100
         ]);
         \App\Models\Transaction::factory(50)->create();

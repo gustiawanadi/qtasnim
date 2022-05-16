@@ -19,7 +19,7 @@ class ItemFactory extends Factory
         return [
             //    
             'nama_barang' => $this->faker->word(),
-            'jenis_barang' => $this->faker->randomElement(['konsumsi', 'pembersih']),
+            'category_id' => $this->faker->randomElement(['1', '2']),
             'stok' => $this->faker->numberBetween(0, 100),
         ];
     }

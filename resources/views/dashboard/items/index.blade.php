@@ -41,7 +41,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item['nama_barang'] }}</td>
-                    <td>{{ $item['jenis_barang'] }}</td>
+                    <td>{{ $item->category['jenis_barang'] }}</td>
                     <td>{{ $item['stok'] }}</td>
                     <td>
                         <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('items.destroy', $item->id) }}"
