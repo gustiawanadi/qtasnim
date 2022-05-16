@@ -16,7 +16,7 @@ class ItemController extends Controller
     public function index()
     {
         return view ('dashboard.items.index',[
-            'items' => Item::latest()->paginate()
+            'items' => Item::latest()->get()
         ]);
     }
 
