@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Daftar Barang</h3>
+        <h3 class="card-title">Daftar Transaksi</h3>
     </div>
 
     <div class="card-body">
@@ -20,9 +20,9 @@
             </div>
         @endif
         <div class="position-absolute" style="z-index: 2">
-            <a class="btn btn-primary btn-sm" href="{{ route('items.create') }}">
+            <a class="btn btn-primary btn-sm" href="{{ route('transactions.create') }}">
                 <i class="fas fa-folder"></i>
-                Tambah Daftar Barang
+                Tambah Daftar Transaksi
             </a>
 
         </div>
@@ -31,22 +31,26 @@
                 <tr>
                     <th>#</th>
                     <th>Nama Barang</th>
-                    <th>Jenis Barang</th>
                     <th>Stok</th>
+                    <th>Jumlah Terjual</th>
+                    <th>Tanggal Transaksi</th>
+                    <th>Jenis Barang</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($items as $item)
+                @foreach ($transactions as $transaction)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item['nama_barang'] }}</td>
-                    <td>{{ $item['jenis_barang'] }}</td>
-                    <td>{{ $item['stok'] }}</td>
+                    <td>{{ $transaction['nama_barang'] }}</td>
+                    <td>{{ $transaction['stok'] }}</td>
+                    <td>{{ $transaction['jumlah_terjual'] }}</td>
+                    <td>{{ $transaction['tgl_transaksi'] }}</td>
+                    <td>{{ $transaction['jenis_barang'] }}</td>
                     <td>
-                        <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('items.destroy', $item->id) }}"
+                        <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('transactions.destroy', $transaction->id) }}"
                             method="POST">
-                            <a href="{{ route('items.edit', $item->id) }}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt">
+                            <a href="{{ route('transactions.edit', $transaction->id) }}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt">
                             </i>EDIT</a>
                             @csrf
                             @method('DELETE')
