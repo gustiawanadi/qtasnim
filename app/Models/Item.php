@@ -15,4 +15,7 @@ class Item extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function transaction(){
+        return $this->hasMany(Transaction::class);
+    }
 }

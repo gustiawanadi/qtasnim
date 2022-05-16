@@ -17,11 +17,9 @@ class TransactionFactory extends Factory
     public function definition()
     {
         return [
-            'nama_barang' => $this->faker->word(),
-            'stok' => $this->faker->numberBetween(50, 100),
+            'item_id' => $this->faker->numberBetween(1,25),
             'jumlah_terjual' => $this->faker->numberBetween(0, 50),
             'tgl_transaksi' => $this->faker->dateTimeBetween('-1 years', 'now'),
-            'jenis_barang' => $this->faker->randomElement(['konsumsi', 'pembersih']),
         ];
     }
 }

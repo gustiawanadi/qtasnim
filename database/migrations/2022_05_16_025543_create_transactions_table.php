@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_barang');
-            $table->integer('stok');
+            $table->foreignId('item_id');
             $table->integer('jumlah_terjual');
             $table->date('tgl_transaksi');
-            $table->string('jenis_barang');
             $table->timestamps();
         });
     }
