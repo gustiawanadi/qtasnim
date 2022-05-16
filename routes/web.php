@@ -24,3 +24,6 @@ Route::get('/dashboard', ([DashboardController::class, 'index']));
 Route::resource('/dashboard/items', ItemController::class);
 Route::resource('/dashboard/categories', CategoryController::class);
 Route::resource('/dashboard/transactions', TransactionController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
