@@ -2,7 +2,7 @@
 @section('content')
 <div class="card card-default">
     <div class="card-header">
-        <h3 class="card-title">Tambah Barang</h3>
+        <h3 class="card-title">Edit Data Barang</h3>
     </div>
 
     <div class="card-body">
