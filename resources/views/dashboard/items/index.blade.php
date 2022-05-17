@@ -1,4 +1,5 @@
 @extends('dashboard.main.index')
+@section('title','Daftar Barang')
 @section('content')
 <div class="card">
     <div class="card-header">
@@ -21,8 +22,8 @@
         @endif
         <div class="position-absolute" style="z-index: 2">
             <a class="btn btn-primary btn-sm" href="{{ route('items.create') }}">
-                <i class="fas fa-folder"></i>
-                Tambah Daftar Barang
+                <i class="fas fa-plus m-1"></i>
+                Tambah Data
             </a>
 
         </div>
@@ -46,11 +47,11 @@
                     <td>
                         <form onsubmit="return confirm('Apakah Anda Yakin?');" action="{{ route('items.destroy', $item->id) }}"
                             method="POST">
-                            <a href="{{ route('items.edit', $item->id) }}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt">
+                            <a href="{{ route('items.edit', $item->id) }}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt m-1">
                             </i>EDIT</a>
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i>HAPUS</button>
+                            <button type="submit" class="btn btn-sm btn-danger ml-2"><i class="fas fa-trash m-1"></i>HAPUS</button>
                         </form>
                     </td>
                 </tr>

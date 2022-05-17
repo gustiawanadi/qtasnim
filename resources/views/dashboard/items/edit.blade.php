@@ -1,4 +1,6 @@
 @extends('dashboard.main.index')
+
+@section('title','Edit Barang')
 @section('content')
 <div class="card card-default">
     <div class="card-header">
@@ -29,7 +31,8 @@
                     <div class="form-group">
                         <label>Jenis Barang</label>
                         <select class="form-control select2bs4" style="width: 100%;" name="category_id">
-                            <option selected="{{ old('category_id', $item->category['jenis_barang']) }}">{{ old('category_id', $item->category['jenis_barang']) }}</option>
+                            <option selected value="{{ old('category_id', $item['category_id']) }}">{{ old('category_id', $item->category['jenis_barang']) }}</option>
+                            {{-- <option selected="{{ old('category_id', $item['category_id']) }}">{{ old('category_id', $item['category_id']) }}</option> --}}
                             @foreach ($categories as $category)
                             <option value="{{ $category['id'] }}">{{ $category['jenis_barang'] }}</option>
                             @endforeach
@@ -44,8 +47,8 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-sm btn-primary">SIMPAN</button>
-                    <button type="reset" class="btn btn-sm btn-warning">RESET</button>
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-check m-1"></i>SIMPAN</button>
+                    <button type="reset" class="btn btn-sm btn-warning"><i class="fas fa-undo-alt m-1"></i>RESET</button>
                 </div>
             </div>
     </div>

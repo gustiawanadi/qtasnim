@@ -6,6 +6,7 @@ use App\Models\Item;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class ItemController extends Controller
 {
@@ -44,8 +45,8 @@ class ItemController extends Controller
     {
         //validate form
         $request->validate([
-            'nama_barang'     => 'required|min:2',
-            'category_id'     => 'required',
+            'nama_barang'     => 'required',
+            'category_id'     => 'required|integer',
             'stok'   => 'required'
         ]);
 
@@ -91,7 +92,7 @@ class ItemController extends Controller
          //validate form
         $request->validate([
             'nama_barang'     => 'required|min:2',
-            'category_id'     => 'required',
+            'category_id'     => 'required|integer',
             'stok'   => 'required'
         ]);
 

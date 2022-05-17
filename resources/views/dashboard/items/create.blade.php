@@ -1,4 +1,6 @@
 @extends('dashboard.main.index')
+
+@section('title','Tambah Barang')
 @section('content')
 <div class="card card-default">
     <div class="card-header">
@@ -42,8 +44,8 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-sm btn-primary">SIMPAN</button>
-                    <button type="reset" class="btn btn-sm btn-warning">RESET</button>
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-check m-1"></i>SIMPAN</button>
+                    <button type="reset" class="btn btn-sm btn-warning"><i class="fas fa-undo-alt m-1"></i>RESET</button>
                 </div>
             </div>
     </div>

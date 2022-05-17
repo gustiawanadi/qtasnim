@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
+use App\Models\Category;
 use App\Models\Item;
 
 class TransactionController extends Controller
@@ -16,6 +17,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
+        
         return view ('dashboard.transactions.index',[
             'transactions' => Transaction::latest()->get()
         ]);
