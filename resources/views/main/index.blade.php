@@ -112,24 +112,9 @@
         </div>
         {{-- END HEADER --}}
 
-        <div class="wrapper">
-            <div class="content-header">
-                <div class="container">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="wrapper pt-5">
             <section class="content">
-                <div class="container">
+                <div class="container my-3">
                     @yield('content')
                 </div>
             </section>
@@ -193,37 +178,38 @@
     <script src="{{ asset('admin-lte') }}/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="{{ asset('admin-lte') }}/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{ asset('admin-lte') }}/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var table = $('#example2').DataTable({
+                "order": [[ 1, "desc" ]],
                 "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
+                "lengthChange": true, //menampilkan data (10,25,50,100) 
+                "searching": true, //fitur searching
+                "ordering": false, // order sesuai kolom nama barang
                 "info": true,
                 "autoWidth": false,
                 "responsive": true,
             });
+            $.fn.dataTable.ext.search.push(
+                function(settings, data, dataIndex) {
+                  var min = $('.date_range_filter').val();
+                  var max = $('.date_range_filter2').val();
+                  var createdAt = data[4];  // -> rubah angka 4 sesuai posisi tanggal pada tabelmu, dimulai dari angka 0
+                  if (
+                    (min == "" || max == "") ||
+                    (moment(createdAt).isSameOrAfter(min) && moment(createdAt).isSameOrBefore(max))
+                  ) {
+                    return true;
+                  }
+                  return false;
+                }
+            );
+            $('.pickdate').change(function() {
+                table.draw();
+            });		
         });
-
     </script>
     {{-- END DATA TABLE --}}
-
-    {{-- SEARCH Support Script --}}
-    <script src="{{ asset('admin-lte') }}/plugins/select2/js/select2.full.min.js"></script>
-    <script>
-        $(function () {
-          $('.select2').select2()
-        });
-    </script>
-    {{-- END-SEARCH Support Script --}}
-
 </body>
 
 </html>

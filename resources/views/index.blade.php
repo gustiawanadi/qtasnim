@@ -1,51 +1,49 @@
 @extends('main.index')
 @section('content')
-<h2 class="text-center display-4">Transaction Search</h2>
-<form action="enhanced-results.html">
+<div class="col-md-12" style="margin-bottom: 20px">
     <div class="row">
-        <div class="col-md-10 mx-auto">
-            <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label>Result Type:</label>
-                        <select class="select2" multiple="multiple" data-placeholder="Any" style="width: 100%;">
-                            <option>Text only</option>
-                            <option>Images</option>
-                            <option>Video</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form-group">
-                        <label>Sort Order:</label>
-                        <select class="select2" style="width: 100%;">
-                            <option selected>ASC</option>
-                            <option>DESC</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form-group">
-                        <label>Order By:</label>
-                        <select class="select2" style="width: 100%;">
-                            <option selected>Title</option>
-                            <option>Date</option>
-                        </select>
-                    </div>
-                </div>
+        <div class="col-md-6">
+            <span>Pilih dari tanggal</span>
+            <div class="input-group">
+                <input type="date" class="form-control pickdate date_range_filter" name="">
+                <span class="input-group-addon" id="basic-addon2"><span
+                        class="glyphicon glyphicon-calendar"></span></span>
             </div>
-            <div class="form-group">
-                <div class="input-group input-group-lg">
-                    <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here"
-                        value="Lorem ipsum">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-lg btn-default">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
-                </div>
+        </div>
+        <div class="col-md-6">
+            <span>Sampai tanggal</span>
+            <div class="input-group">
+                <input type="date" class="form-control pickdate date_range_filter2" name="">
+                <span class="input-group-addon" id="basic-addon2"><span
+                        class="glyphicon glyphicon-calendar"></span></span>
             </div>
         </div>
     </div>
-</form>
+</div>
+<div class="col-md-12">
+    <table id="example2" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nama Barang</th>
+                <th>Stok</th>
+                <th>Jumlah Terjual</th>
+                <th>Tanggal Transaksi</th>
+                <th>Jenis Barang</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($transactions as $transaction)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $transaction->item->nama_barang }}</td>
+                <td>{{ $transaction->item->stok }}</td>
+                <td>{{ $transaction['jumlah_terjual'] }}</td>
+                <td>{{ $transaction['tgl_transaksi'] }}</td>
+                <td>{{ $transaction->item->category->jenis_barang }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 @endsection

@@ -28,4 +28,3 @@ Route::get('/dashboard', ([DashboardController::class, 'index']))->middleware('a
 Route::resource('/dashboard/items', ItemController::class)->middleware('auth');
 Route::resource('/dashboard/categories', CategoryController::class)->middleware('auth');
 Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
-
