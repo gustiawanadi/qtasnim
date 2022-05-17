@@ -150,8 +150,6 @@
 
     <script src="{{ asset('admin-lte') }}/dist/js/adminlte.js?v=3.2.0"></script>
 
-    {{-- <script src="{{ asset('admin-lte') }}/dist/js/demo.js"></script> --}}
-
     <script src="{{ asset('admin-lte') }}/dist/js/pages/dashboard.js"></script>
     {{-- END INDEX --}}
     {{-- DATA TABLE --}}
