@@ -82,19 +82,9 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-         //validate form
-        // $request->validate([
-        //     'nama_barang'     => 'required|min:2',
-        //     'category_id'     => 'required|integer',
-        //     'stok'   => 'required'
-        // ]);
+        //validate form di updateItemRequest
 
         //update Item
-        // $item->update([
-        //     'nama_barang'=> $request->nama_barang,
-        //     'category_id'=> $request->category_id,
-        //     'stok'   => $request->stok
-        // ]);
         $item->update($request->validated());
         //redirect to index
         return redirect()->route('items.index')->with(['success' => 'Data Berhasil Diubah!']);

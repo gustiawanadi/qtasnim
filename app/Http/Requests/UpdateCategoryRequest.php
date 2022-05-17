@@ -24,7 +24,21 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'jenis_barang' => 'required|unique:categories'
+        ];
+    }
+    
+    public function messages()
+    {
+        return [
+            'jenis_barang.required' => ':attribute wajib di isi!',
+            'jenis_barang.unique' => ':attribute sudah ada!',
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            'jenis_barang' => 'Nama kategori',
         ];
     }
 }

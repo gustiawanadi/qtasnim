@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label>Nama Kategori</label>
                         <input type="text" class="form-control select2bs4 @error('jenis_barang') is-invalid @enderror"
-                            id="jenis_barang" name="jenis_barang" placeholder="Masukkan Nama Kategori" required>
+                            id="jenis_barang" name="jenis_barang" value="{{ old('jenis_barang') }}" placeholder="Masukkan Nama Kategori" required>
                         <!-- error message untuk nama Kategori -->
                         @error('jenis_barang')
                         <div class="alert alert-danger mt-2">

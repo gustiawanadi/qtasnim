@@ -39,13 +39,8 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //validate form
-        $request->validate([
-            'jenis_barang' => 'required'
-        ]);
-
         //create Category
-        Category::create($request->all());
+        Category::create($request->validated());
 
         //redirect to index
         return redirect()->route('categories.index')->with(['success' => 'Data Berhasil Disimpan!']);
@@ -87,11 +82,11 @@ class CategoryController extends Controller
            'jenis_barang'     => 'required'
        ]);
 
-       //update category
-    //    $category->update([
-    //        'jenis_barang'=> $request->jenis_barang
-    //    ]);
-       $category->update($request->all());
+        //update category
+        //$category->update([
+        //       'jenis_barang'=> $request->jenis_barang
+        //    ]);
+       $category->update($request->validated());
 
        //redirect to index
        return redirect()->route('categories.index')->with(['success' => 'Data Berhasil Diubah!']);
