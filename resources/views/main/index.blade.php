@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Hello World</title>
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -31,10 +31,14 @@
     {{-- DATA TABLE --}}
 
     <link rel="stylesheet" href="{{ asset('admin-lte') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ asset('admin-lte') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('admin-lte') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('admin-lte') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     {{-- END DATA TABLE --}}
 
+    {{-- SEARCH Support --}}
+    <link rel="stylesheet" href="{{ asset('admin-lte') }}/plugins/select2/css/select2.min.css">
+    {{-- END SEARCH Support --}}
     <script nonce="606600a2-3964-427b-b1d4-e8e80c65ebfb">
         (function (w, d) {
             ! function (a, e, t, r) {
@@ -77,40 +81,38 @@
     </script>
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="layout-fixed">
     <div class="wrapper">
-{{-- PRE-LOADER --}}
+        {{-- PRE-LOADER --}}
         <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="{{ asset('admin-lte') }}/dist/img/AdminLTELogo.png" alt="AdminLTELogo"
                 height="60" width="60">
         </div>
-{{-- END PRE-LOADER --}}
-{{-- NOTIF --}}
-@if ($message = Session::get('success'))
-<div class="card card-default bg-success">
-    <div class="card-header">
-        <h3 class="card-title text-white">{{ $message }}</h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-            </button>
+        {{-- END PRE-LOADER --}}
+        {{-- NOTIF --}}
+        @if ($message = Session::get('success'))
+        <div class="card card-default bg-success">
+            <div class="card-header">
+                <h3 class="card-title text-white">{{ $message }}</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-@endif
-{{-- NOTIF --}}
+        @endif
+        {{-- END NOTIF --}}
+
         {{-- HEADER --}}
-        @include('dashboard.main.header')
+        <div class="wrapper">
+            @include('main.header')
+        </div>
         {{-- END HEADER --}}
 
-        {{-- SIDE --}}
-        @include('dashboard.main.side')
-        {{-- END-SIDE --}}
-
-        <div class="content-wrapper">
-
+        <div class="wrapper">
             <div class="content-header">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1 class="m-0">Dashboard</h1>
@@ -124,23 +126,12 @@
                     </div>
                 </div>
             </div>
-
-
             <section class="content">
-                <div class="container-fluid">
+                <div class="container">
                     @yield('content')
                 </div>
             </section>
-
         </div>
-
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-            All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
-            </div>
-        </footer>
 
         <aside class="control-sidebar control-sidebar-dark">
 
@@ -182,7 +173,7 @@
 
     <script src="{{ asset('admin-lte') }}/dist/js/adminlte.js?v=3.2.0"></script>
 
-    <script src="{{ asset('admin-lte') }}/dist/js/demo.js"></script>
+    {{-- <script src="{{ asset('admin-lte') }}/dist/js/demo.js"></script> --}}
 
     <script src="{{ asset('admin-lte') }}/dist/js/pages/dashboard.js"></script>
     {{-- END INDEX --}}
@@ -221,6 +212,15 @@
 
     </script>
     {{-- END DATA TABLE --}}
+
+    {{-- SEARCH Support Script --}}
+    <script src="{{ asset('admin-lte') }}/plugins/select2/js/select2.full.min.js"></script>
+    <script>
+        $(function () {
+          $('.select2').select2()
+        });
+    </script>
+    {{-- END-SEARCH Support Script --}}
 
 </body>
 

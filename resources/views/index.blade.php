@@ -1,47 +1,51 @@
 @extends('main.index')
 @section('content')
-<div class="row">
-    <div class="col-lg-4 col-12">
-
-        <div class="small-box bg-info">
-            <div class="inner">
-                <h3>150</h3>
-                <p>Barang</p>
+<h2 class="text-center display-4">Transaction Search</h2>
+<form action="enhanced-results.html">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>Result Type:</label>
+                        <select class="select2" multiple="multiple" data-placeholder="Any" style="width: 100%;">
+                            <option>Text only</option>
+                            <option>Images</option>
+                            <option>Video</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>Sort Order:</label>
+                        <select class="select2" style="width: 100%;">
+                            <option selected>ASC</option>
+                            <option>DESC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>Order By:</label>
+                        <select class="select2" style="width: 100%;">
+                            <option selected>Title</option>
+                            <option>Date</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="icon">
-                <i class="ion ion-bag"></i>
+            <div class="form-group">
+                <div class="input-group input-group-lg">
+                    <input type="search" class="form-control form-control-lg" placeholder="Type your keywords here"
+                        value="Lorem ipsum">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-lg btn-default">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
-
-    <div class="col-lg-4 col-12">
-
-        <div class="small-box bg-success">
-            <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-                <p>Kategori</p>
-            </div>
-            <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-
-    <div class="col-lg-4 col-12">
-
-        <div class="small-box bg-danger">
-            <div class="inner">
-                <h3>65</h3>
-                <p>Transaksi</p>
-            </div>
-            <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-
-</div>
+</form>
 @endsection
