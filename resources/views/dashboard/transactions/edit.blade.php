@@ -15,13 +15,18 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Nama Barang</label>
-                        <select class="form-control select2bs4" style="width: 100%;" name="item_id">
-                            <option selected="{{ old('item_id', $transaction->item['nama_barang']) }}">{{ old('item_id', $transaction->item['nama_barang']) }}</option>
-                            {{-- <option selected="selected">Pilih</option> --}}
+                        <select class="form-control select2bs4 @error('item_id') is-invalid @enderror" style="width: 100%;" name="item_id">
+                            <option selected value="{{ old('item_id', $transaction['item_id']) }}">{{ old('item_id', $transaction->item['nama_barang']) }}</option>
                             @foreach ($items as $item)
-                            <option value="{{ $item['id'] }}">{{ $item['nama_barang'] }}</option>
+                            <option value="{{ $item['id'] }}"{{ old('item_id') == $item['id'] ? 'selected' : '' }}>{{ $item['nama_barang'] }}</option>
+                            <!-- error message untuk nama barang -->
                             @endforeach
                         </select>
+                        @error('item_id')
+                        <div class="alert alert-danger mt-2">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -40,8 +45,14 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Jumlah Terjual</label>
-                        <input type="number" class="form-control select2bs4" id="jumlah_terjual" name="jumlah_terjual"
+                        <input type="number" class="form-control select2bs4  @error('jumlah_terjual') is-invalid @enderror" id="jumlah_terjual" name="jumlah_terjual"
                             placeholder="Masukkan Jumlah Terjual" value="{{ old('jumlah_terjual', $transaction->jumlah_terjual) }}">
+                               <!-- error message untuk jumlah terjual -->
+                        @error('jumlah_terjual')
+                        <div class="alert alert-danger mt-2">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                 </div>
                 

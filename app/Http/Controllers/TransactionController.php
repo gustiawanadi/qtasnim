@@ -43,15 +43,8 @@ class TransactionController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
-        //validate form
-        $request->validate([
-            'item_id'     => 'required',
-            'jumlah_terjual'     => 'required',
-            'tgl_transaksi'     => 'required'
-        ]);
-
         //create Transaction
-        Transaction::create($request->all());
+        Transaction::create($request->validated());
 
         //redirect to index
         return redirect()->route('transactions.index')->with(['success' => 'Data Berhasil Disimpan!']);
@@ -90,18 +83,14 @@ class TransactionController extends Controller
     public function update(UpdateTransactionRequest $request, Transaction $transaction)
     {
         //validate form
-       $request->validate([
-        'item_id'     => 'required',
-        'jumlah_terjual'     => 'required',
-        'tgl_transaksi'     => 'required'
-       ]);
+    //    $request->validate([
+    //     'item_id'     => 'required',
+    //     'jumlah_terjual'     => 'required',
+    //     'tgl_transaksi'     => 'required'
+    //    ]);
 
        //update transaction
-       $transaction->update([
-           'item_id'=> $request->item_id,
-           'jumlah_terjual'     => $request->jumlah_terjual,
-           'tgl_transaksi'     => $request->tgl_transaksi
-       ]);
+       $transaction->update($request->validated());
 
        //redirect to index
        return redirect()->route('transactions.index')->with(['success' => 'Data Berhasil Diubah!']);
