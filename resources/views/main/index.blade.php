@@ -84,9 +84,11 @@
 <body class="layout-fixed">
     <div class="wrapper">
         {{-- PRE-LOADER --}}
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('admin-lte') }}/dist/img/AdminLTELogo.png" alt="AdminLTELogo"
-                height="60" width="60">
+        <div class="preloader flex-column d-flex justify-content-center align-items-center">
+            <strong>Loading...</strong>
+            <div class="spinner-grow mt-2" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
         {{-- END PRE-LOADER --}}
         {{-- NOTIF --}}

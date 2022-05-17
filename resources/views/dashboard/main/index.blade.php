@@ -31,7 +31,8 @@
     {{-- DATA TABLE --}}
 
     <link rel="stylesheet" href="{{ asset('admin-lte') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ asset('admin-lte') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('admin-lte') }}/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('admin-lte') }}/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     {{-- END DATA TABLE --}}
 
@@ -79,26 +80,15 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-{{-- PRE-LOADER --}}
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="{{ asset('admin-lte') }}/dist/img/AdminLTELogo.png" alt="AdminLTELogo"
-                height="60" width="60">
+        {{-- PRE-LOADER --}}
+        <div class="preloader flex-column d-flex justify-content-center align-items-center">
+            <strong>Loading...</strong>
+            <div class="spinner-grow mt-2" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
-{{-- END PRE-LOADER --}}
-{{-- NOTIF --}}
-@if ($message = Session::get('success'))
-{{-- <div class="card card-default bg-success">
-    <div class="card-header">
-        <h3 class="card-title text-white">{{ $message }}</h3>
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    </div>
-</div> --}}
-@endif
-{{-- NOTIF --}}
+        {{-- END PRE-LOADER --}}
+
         {{-- HEADER --}}
         @include('dashboard.main.header')
         {{-- END HEADER --}}
