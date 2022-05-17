@@ -28,7 +28,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Jenis Barang</label>
-                        <select class="form-control select2bs4" style="width: 100%;" name="category_id" required>
+                        <select class="form-control select2bs4 @error('category_id') is-invalid @enderror" style="width: 100%;" name="category_id" required>
                             <option selected="selected">Pilih</option>
                             @foreach ($categories as $category)
                             <option value="{{ $category['id'] }}"{{ old('category_id') == $category['id'] ? 'selected' : '' }}>{{ $category['jenis_barang'] }}</option>
@@ -45,7 +45,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Stok</label>
-                        <input type="number" class="form-control select2bs4" id="stok" name="stok" value="{{ old('stok') }}" placeholder="Masukkan Total Stok" required>
+                        <input type="number" class="form-control select2bs4 @error('stok') is-invalid @enderror" id="stok" name="stok" value="{{ old('stok') }}" placeholder="Masukkan Total Stok" required>
                         <!-- error message untuk stok -->
                         @error('stok')
                         <div class="alert alert-danger mt-2">
