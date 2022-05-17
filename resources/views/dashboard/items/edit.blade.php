@@ -17,7 +17,7 @@
                         <label>Nama Barang</label>
                         <input type="text" class="form-control select2bs4 @error('nama_barang') is-invalid @enderror"
                             id="nama_barang" name="nama_barang" value="{{ old('nama_barang', $item->nama_barang) }}"
-                            placeholder="Masukkan Nama Barang" required>
+                            placeholder="Masukkan Nama Barang" required readonly>
                         <!-- error message untuk nama barang -->
                         @error('nama_barang')
                         <div class="alert alert-danger mt-2">
@@ -32,11 +32,16 @@
                         <label>Jenis Barang</label>
                         <select class="form-control select2bs4" style="width: 100%;" name="category_id">
                             <option selected value="{{ old('category_id', $item['category_id']) }}">{{ old('category_id', $item->category['jenis_barang']) }}</option>
-                            {{-- <option selected="{{ old('category_id', $item['category_id']) }}">{{ old('category_id', $item['category_id']) }}</option> --}}
                             @foreach ($categories as $category)
-                            <option value="{{ $category['id'] }}">{{ $category['jenis_barang'] }}</option>
+                                <option value="{{ $category['id'] }}"{{ old('category_id') == $category['id'] ? 'selected' : '' }}>{{ $category['jenis_barang'] }}</option>
                             @endforeach
                         </select>
+                        <!-- error message untuk nama barang -->
+                        @error('category_id')
+                        <div class="alert alert-danger mt-2">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -44,6 +49,12 @@
                         <label>Stok</label>
                         <input type="number" class="form-control select2bs4" id="stok" name="stok"
                             value="{{ old('stok', $item->stok) }}" placeholder="Masukkan Total Stok">
+                        <!-- error message untuk stok barang -->
+                        @error('stok')
+                        <div class="alert alert-danger mt-2">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-12">

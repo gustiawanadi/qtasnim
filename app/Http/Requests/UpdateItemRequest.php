@@ -24,7 +24,27 @@ class UpdateItemRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            // 'nama_barang'     => 'required|unique:items',
+            'category_id'     => 'required|integer',
+            'stok'   => 'required|integer'
+        ];
+    }
+    
+    public function messages()
+    {
+        return [
+            'nama_barang.required' => 'Nama barang wajib di isi!',
+            'nama_barang.unique' => 'Barang sudah ada!',
+            'category_id.required' => 'Kategori wajib di isi!',
+            'category_id.integer' => 'Jenis barang wajib di isi!',
+            'stok.required' => 'Stok wajib di isi!',
+            'stok.integer' => 'Stok berupa angka',
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            'category_id' => 'jenis barang',
         ];
     }
 }

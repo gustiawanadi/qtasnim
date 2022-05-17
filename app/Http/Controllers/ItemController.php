@@ -43,17 +43,10 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        //validate form
-        $request->validate([
-            'nama_barang'     => 'required',
-            'category_id'     => 'required|integer',
-            'stok'   => 'required'
-        ]);
-
+        //--------validate form ada di Request/StoreItemRequest
+        //------------- 
         //create Item
-        Item::create($request->all());
-
-        //redirect to index
+        Item::create($request->validated());
         return redirect()->route('items.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
@@ -90,19 +83,19 @@ class ItemController extends Controller
     public function update(UpdateItemRequest $request, Item $item)
     {
          //validate form
-        $request->validate([
-            'nama_barang'     => 'required|min:2',
-            'category_id'     => 'required|integer',
-            'stok'   => 'required'
-        ]);
+        // $request->validate([
+        //     'nama_barang'     => 'required|min:2',
+        //     'category_id'     => 'required|integer',
+        //     'stok'   => 'required'
+        // ]);
 
         //update Item
-        $item->update([
-            'nama_barang'=> $request->nama_barang,
-            'category_id'=> $request->category_id,
-            'stok'   => $request->stok
-        ]);
-
+        // $item->update([
+        //     'nama_barang'=> $request->nama_barang,
+        //     'category_id'=> $request->category_id,
+        //     'stok'   => $request->stok
+        // ]);
+        $item->update($request->validated());
         //redirect to index
         return redirect()->route('items.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
