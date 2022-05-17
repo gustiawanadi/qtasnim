@@ -1,4 +1,5 @@
 @extends('main.index')
+@section('title','Tester')
 @section('content')
 <div class="col-md-12" style="margin-bottom: 20px">
     <div class="row">
