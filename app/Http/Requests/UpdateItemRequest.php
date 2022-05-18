@@ -25,11 +25,12 @@ class UpdateItemRequest extends FormRequest
     {
         return [
             // 'nama_barang'     => 'required|unique:items',
+            'nama_barang'     => 'required',
             'category_id'     => 'required|integer',
             'stok'   => 'required|integer'
         ];
     }
-    
+
     public function messages()
     {
         return [

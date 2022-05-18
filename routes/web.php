@@ -24,7 +24,7 @@ use App\Http\Controllers\TransactionController;
 Auth::routes();
 Route::get('/', [App\Http\Controllers\FrondEndController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/dashboard', ([DashboardController::class, 'index']))->middleware('auth');;
+Route::get('/dashboard', ([DashboardController::class, 'index']))->middleware('auth');
 Route::resource('/dashboard/items', ItemController::class)->middleware('auth');
 Route::resource('/dashboard/categories', CategoryController::class)->middleware('auth');
 Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
