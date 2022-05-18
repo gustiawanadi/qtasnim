@@ -185,9 +185,9 @@
                 "paging": true,
                 "lengthChange": true, //menampilkan data (10,25,50,100) 
                 "searching": true, //fitur searching
-                "ordering": false, // order sesuai kolom nama barang
+                "ordering": true, // order sesuai kolom nama barang
                 "info": true,
-                "autoWidth": false,
+                "autoWidth": true,
                 "responsive": true,
             });
             $.fn.dataTable.ext.search.push(
